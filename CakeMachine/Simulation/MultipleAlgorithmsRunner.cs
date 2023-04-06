@@ -11,6 +11,7 @@ internal class MultipleAlgorithmsRunner
     {
         _runners = Assembly.GetExecutingAssembly().GetTypes()
             .Where(type => type.BaseType == typeof(Algorithme))
+            .Where(type => type.Name is "CustomAlgo" or "UsineEtalon")
             .Select(algorithm => new SingleAlgorithmRunner(algorithm));
     }
 
